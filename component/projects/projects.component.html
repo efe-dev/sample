@@ -1,0 +1,22 @@
+<div *ngIf="!projects" align="center">
+    <img src="assets/loading.gif" width="40" style="padding: 30% 0px 30% 0px">
+</div>
+<div class="row" *ngIf="projects">
+    <div class="col-md-4 project-card" *ngFor="let project of projects" id="{{'project-' + project.Id}}" (click)="selectProject(project)">
+        <div class="card">
+            <div class="card-block">
+                <blockquote class="blockquote">
+                    <p class="mb-0">{{ project.name }}</p>
+                    <footer class="blockquote-footer"> {{ project.city }} </footer>
+                </blockquote>
+            </div>
+            <img class="img-fluid hidden-sm-down" src="assets/img/{{project.id}}.png" alt="{{ project.name }}'s project image" onError="this.onerror=null;this.src='assets/img/placeholder.png'">
+            <div class="card-block">
+                <div class="card-text float-xs-right">
+                    {{ project.houseCount }}
+                    <span class="fa fa-home"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

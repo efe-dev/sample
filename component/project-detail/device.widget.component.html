@@ -1,0 +1,20 @@
+<div class="card card-block">
+  <div class="card-title" align="center">
+    {{device.Model ? device.Model.Name : device.DeviceType}}
+    <span *ngIf="!device.active">(inactive)</span>
+    <span class="fa fa-check-circle float-xs-right"></span>
+  </div>
+  <div *ngIf="reports" class="row">
+    <div *ngFor="let report of reports" class="col-xs-4 col-md-4" align="center">
+      <div>
+        <object width="30" height="30" [data]="getIcon(report) | safe" type="image/svg+xml"></object>
+      </div>
+      <div>
+        <span>{{(monitoringService.DataFormatting(report).gaugeDataFilter(report.data) && monitoringService.DataFormatting(report).gaugeDataFilter(report.data).toFixed(1)) || '-'}}</span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!reports" class="loading-indicator" align="center">
+    <img src="assets/loading.gif" width="30" style="padding: 20px 0px 20px 0px">
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="searchbox hidden-sm-down">
+    <input type="text" spellcheck="false" placeholder="{{'Search' | translate}}..." id="search-input" class="validate filter-input"
+        [(ngModel)]="query" (keyup)="filter()" (click)="filter()">
+
+        <div class="suggestions" *ngIf="!closed && searchResults && searchResults.length > 0">
+            <a href="javascript:void(0)" (click)="close()" class="close">
+                <span class="fa fa-times-circle" style="color: gray; padding: 8px;"></span>
+            </a>
+            <p align="left">Adressen ({{searchResults.length}})</p>
+            <div *ngFor="let result of searchResults" align="left" class="list">
+                <a href="javascript:void(0)" (click)="select(result)">{{result.Address}}</a>
+            </div>
+        </div>
+</div>

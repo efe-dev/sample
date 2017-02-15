@@ -1,0 +1,11 @@
+<div class="row">
+    <ol *ngIf="!trail" class="breadcrumb">
+        <li class="breadcrumb-item"><a class="last">{{'Loading' | translate}}...</a></li>
+    </ol>
+    <ol *ngIf="trail" class="breadcrumb">
+        <li class="breadcrumb-item" *ngFor="let key of trail.getParts(); let last = last" [ngClass]="{'active': last}">
+            <a class="completed" role="button" *ngIf="!last && trail.getUrl(key)" (click)="navigateTo(trail.getUrl(key))">{{key | translate}}</a>
+            <a class="last" *ngIf="last || !trail.getUrl(key)">{{key | translate }}</a>
+        </li>
+    </ol>
+</div>

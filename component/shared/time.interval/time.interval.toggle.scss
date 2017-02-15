@@ -1,0 +1,15 @@
+@import '../../../../styles';
+
+.time-interval{
+  padding-top: 40px;
+  padding-bottom: 40px;
+  .active {
+      background-color: $Brand-Color !important;
+      color: white;
+      min-width:150px;
+      &:focus {
+          color: white;
+          outline: none;
+      }
+  }
+}

@@ -1,0 +1,17 @@
+<div *ngIf="(!devices || loading) && !error" align="center">
+    <img src="assets/loading.gif" width="40" style="padding: 30% 0px 30% 0px">
+</div>
+<div *ngIf="error" align="center">
+    {{error | translate}}
+</div>
+<div [hidden]="!(devices && !loading && !error)">
+    <time-interval [time]="time" [dataUnit]="dataUnit" (changed)="intervalChanged($event)"></time-interval>
+    <div class="row">
+        <div class="col-md-12">
+            <div Chart id="someline" [devices]="devices" [timePeriod]="time" [dataUnit]="dataUnit" [dataSection]="dataSection" (error)="onError($event)"
+                (loadComplete)="onLoadComplete($event)">
+        </div>
+    </div>
+</div>
+<br><br><br>
+</div>

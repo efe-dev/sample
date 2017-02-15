@@ -1,0 +1,62 @@
+@import '../../../styles';
+
+div.row {
+    .house-card{
+        cursor: pointer;
+
+        #infoline {
+        padding: 17px;
+        color: $Secondary-Color;
+        font-size: 15px;
+
+        #address {
+            padding-left: 5px;
+            display: inline;
+            font-size: 15px;
+        }
+
+        .fa.fa-home {
+            padding-right: 5px;
+            }
+        
+        .fa.fa-map-marker {
+            padding-left: 15px;
+             }
+        }
+        .blockquote {
+            border-left-color: $Brand-Color !important;
+            background-color: #FAFAFA;
+         }
+
+        .more-details-action{
+            font-size: 12px;
+            background-color: #00529C;
+            border: 0;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+
+        .house-devices{
+            flex: auto;
+
+              }
+
+            .device-widget{
+                margin-top: 10px;
+                height: 150px;
+
+                app-device-widget{
+                    height: inherit;
+        
+                }
+            }
+        }
+    
+    .pagination{
+        text-align: center;
+    }
+}
+
+    

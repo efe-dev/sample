@@ -1,0 +1,60 @@
+<div *ngIf="!device && !error" align="center">
+  <img src="assets/loading.gif" width="40" style="padding: 30% 0px 30% 0px">
+</div>
+<div *ngIf="error" align="center">
+  {{error | translate}}
+</div>
+<div class="blockquote" *ngIf="device && !error">
+  <div class="detail-header">{{device.deviceModel.model}}</div>
+  <div class="row">
+    <div class="col-md-4" id="devicePhoto">
+      <div *ngIf="device.isWpu()">
+        <img src="assets/img/wpu.png" class="img-fluid" alt="">
+      </div>
+      <div *ngIf="device.isBwp()">
+        <img src="assets/img/bwp.png" class="img-fluid" alt="">
+      </div>
+      <div *ngIf="device.isPulse()">
+        <img src="assets/img/pulse.png" class="img-fluid" alt="">
+      </div>
+
+    </div>
+    <div class="col-md-5 col-offset-1">
+      <table class="table">
+        <tbody>
+          <p>{{'Product details' | translate}}</p>
+          <tr>
+            <td>{{'Id' | translate}}</td>
+            <td>{{device.id}}</td>
+          </tr>
+          <tr>
+            <td>{{'Model' | translate}}</td>
+            <td>{{device.deviceModel.model}}</td>
+          </tr>
+          <tr>
+            <td>{{'Last Communication' | translate}}</td>
+            <td>{{device.lastCommunication | date:"HH:mm dd-MM-yyyy" }}</td>
+          </tr>
+          <tr>
+            <td>{{'Status' | translate}}</td>
+            <td *ngIf="device.active === true">{{ 'Active' | translate }}</td>
+            <td *ngIf="device.active === false">{{ 'Inactive' | translate }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div *ngIf="device && device.isWpu()">
+    <time-interval [time]="time" [dataUnit]="dataUnit" (changed)="intervalChanged($event)"></time-interval>
+    <div class="row">
+      <div *ngIf="device && loading && !error" align="center">
+        <img src="assets/loading.gif" width="40" style="padding: 15% 0px 30% 0px">
+      </div>
+      <div class="col-md-12" [hidden]="loading">
+        <div Chart id="someline" [devices]="devices" [timePeriod]="time" [dataUnit]="DataUnit.Percent" [dataSection]="DataSection.DeviceOperation"
+          (loadComplete)="onLoadComplete($event)">
+      </div>
+    </div>
+  </div>
+</div>
+</div>

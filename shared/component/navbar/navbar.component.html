@@ -1,0 +1,45 @@
+<nav class="navbar navbar-fixed-top navbar-default bg-faded">
+    <a class="navbar-brand" routerLink="/">
+        <object width="60" data="assets/logo/logo-white.svg" type="image/svg+xml"></object>
+    </a>
+    <ul class="nav navbar-nav float-xs-left">
+        <li class="nav-item" [class.hidden]="isTenant">
+            <a class="nav-link" routerLink="/projects">
+                {{'Projects' | translate}}
+            </a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item searchbar">
+            <searchbar></searchbar>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" style="visibility: hidden">
+                <span class="fa fa-exclamation-circle"></span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <div class="dropdown">
+                <button class="btn btn-icon dropdown-toggle" type="button" data-toggle="dropdown">
+                    <object width="20" data="assets/icon/en.svg" *ngIf="lang === 'en'"></object>
+                    <object width="20" data="assets/icon/nl.svg" *ngIf="lang === 'nl'"></object>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" align="center" id="language">
+                    <li>
+                        <a (click)="toEng()" *ngIf="lang === 'nl'">
+                            <object width="20" data="assets/icon/en.svg"></object>
+                        </a>
+                        <a (click)="toNl()" *ngIf="lang === 'en'">
+                            <object width="20" data="assets/icon/nl.svg"></object>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link" (click)="logout()" title="Logout">
+                <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</nav>

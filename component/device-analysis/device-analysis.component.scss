@@ -1,0 +1,21 @@
+@import '../../../styles';
+#lineChart {
+    margin-top: 50px;
+}
+
+.active {
+    background-color: $Brand-Color !important;
+    color: white;
+    &:focus {
+        color: white;
+        outline: none;
+    }
+}
+
+.btn-group {
+    button {
+        &:focus {
+            outline: none;
+        }
+    }
+}

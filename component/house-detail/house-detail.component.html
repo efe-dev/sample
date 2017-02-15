@@ -1,0 +1,55 @@
+<div class="sidebar-toggle" (click)="opened = !opened; toggled = !toggled; pushed = !pushed;" [class.change]="toggled">
+    <button class="btn btn-icon">
+        <span class="fa fa-bars" *ngIf="!toggled"></span>
+        <span class="fa fa-ellipsis-v" *ngIf="toggled"></span>
+    </button>
+</div>
+
+<div class="sidebar" [class.open]="opened">
+    <object width="200" data="assets/logo/slogan-white.svg"></object>
+    <div class="menu">
+        <a onClick="scroll(0,0);">
+            <i class="fa fa-dot-circle-o"></i> {{'House' | translate }}
+        </a>
+        <a onClick="document.getElementById('devices').scrollIntoView();">
+            <i class="fa fa-dot-circle-o"></i> {{'Products' | translate}}
+        </a>
+    </div>
+</div>
+
+<div *ngIf="!house && !error" align="center">
+    <img src="assets/loading.gif" width="40" style="padding: 30% 0px 30% 0px">
+</div>
+<div *ngIf="error" align="center">
+    {{error}}
+</div>
+<div class="row" id="top" *ngIf="house && !error" [class.push]="pushed">
+    <div class="col-md-12">
+        <div id="houseDetailContainer">
+            <div class="row" id="gauge-row">
+                <div *ngFor="let report of reports">
+                    <div class="col-md-4 col-sm-6" align="center" *ngIf="monitoringService.DataFormatting(report).showAsGauge">
+                        <gauge-widget [report]="report" [houseId]="houseId"></gauge-widget>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <section #devices name="devices" id="devices">
+                <div class="blockquote">
+                    <div id="installedDevices">{{ 'Installed Devices' | translate }}</div>
+                    <div class="row">
+                        <div *ngFor="let device of house.Devices" class="installed-device">
+                            <div class="col-md-4" align="center" (click)="selectDevice(device)">
+                                <div class="title">{{device.Model.Name}}</div>
+                                <hr>
+                                <img src="{{'assets/img/' + device.DeviceType + '.png'}}" class="img-fluid" alt="{{device.DeviceType + ' sample'}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

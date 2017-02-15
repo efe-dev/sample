@@ -1,0 +1,16 @@
+<div class="widget disabledBackground" [class.disabledBackground]="isDisabled">
+    <div class="widget-title">
+        {{ DataCategory[report.dataCategory] | translate }}
+        <button class="btn btn-primary btn-sm float-xs-right" *ngIf="dataFormatting.showInGraph" (click)="selectGauge()">
+      {{ 'More Details' | translate }}
+    </button>
+    </div>
+    <div class="widget-body disabled" [class.disabled]="isDisabled" align="center">
+        <!--<div class="disabled" *ngIf="isDisabled"></div>-->
+        <div id="{{'gauge-' + report.id}}-label" class="gaugeLabel"></div>
+        <div id="{{'gauge-' + report.id}}" class="gauge"></div>
+        <span class="valueC">{{DataUnit[report.dataUnit] | translate}}</span>
+        <span class="min">{{dataFormatting.min}}</span>
+        <span class="max">{{dataFormatting.max}}</span>
+    </div>
+</div>

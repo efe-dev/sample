@@ -1,0 +1,32 @@
+<br><br>
+
+<div *ngIf="!houses" align="center">
+  <img src="assets/loading.gif" width="40" style="padding: 30% 0px 30% 0px">
+</div>
+<div class="row" *ngIf="houses">
+  <div class="col-md-12">
+    <div class="house-card row" *ngFor="let house of houses.slice((currentPage - 1) * pageSize, currentPage * pageSize)" (click)="selectHouse(projectId, house)">
+      <div class="blockquote">
+        <div class="row" id="infoline">
+          <span class="fa fa-home"></span> {{house.buildingNumber}}
+          <span class="fa fa-map-marker"></span>
+          <p id="address">{{house.address.line1}} {{house.address.line2}} {{house.address.line3}} {{house.address.locality}}</p>
+          <button class="more-details-action float-xs-right">{{'More Details' | translate}}</button>
+        </div>
+        <div class="row">
+          <div class="house-devices">
+            <div *ngFor="let device of house.devices" class="col-md-4 device-widget">
+              <app-device-widget [device]="device"></app-device-widget>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="houses">
+  <div class="col-md-12 pagination">
+    <pagination [totalItems]="totalItems" [itemsPerPage]="pageSize" [maxSize]="10" [boundaryLinks]="true" [rotate]="false" [(ngModel)]="currentPage"
+      (pageChanged)="setPage($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+  </div>
+</div>

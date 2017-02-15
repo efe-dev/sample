@@ -1,0 +1,114 @@
+@import '../../../../styles';
+
+div.row {
+    z-index: 2222;
+    margin-top: 70px;
+
+    .breadcrumb {
+      padding: 0px;
+      background: lightgray;
+      list-style: none;
+      overflow: hidden;
+
+      & li+li:before {
+        padding: 0;
+      }
+
+      & li {
+        a {
+          font-weight: 300;
+        }
+        float: left;
+      }
+      
+      & li.breadcrumb-item a.completed {
+        background: $Brand-Color;
+        &:after {
+          	border-left: 30px solid $Brand-Color; 
+        }
+      }
+      
+      & li.breadcrumb-item.active a.last {
+        color: white;
+        text-decoration: none;
+        padding: 10px 0 10px 45px;
+        position: relative;
+        display: block;
+        float: left;
+        &:after {
+          content: " ";
+          display: block;
+          width: 0;
+          height: 0;
+          border-top: 50px solid transparent;
+          border-bottom: 50px solid transparent;
+          border-left: 30px solid hsla(0, 0%, 83%, 1);
+          position: absolute;
+          top: 50%;
+          margin-top: -50px;
+          left: 100%;
+          z-index: 2;
+          background-color: transparent !important;
+        }
+        &:before {
+          content: " ";
+          display: block;
+          width: 0;
+          height: 0;
+          border-top: 50px solid transparent;
+          border-bottom: 50px solid transparent;
+          border-left: 30px solid white;
+          position: absolute;
+          top: 50%;
+          margin-top: -50px;
+          margin-left: 1px;
+          left: 100%;
+          z-index: 1;
+          background-color: transparent !important;
+        }
+      }
+
+      & li a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 0 10px 45px;
+        position: relative;
+        display: block;
+        float: left;
+
+        &:after {
+          content: " ";
+          display: block;
+          width: 0;
+          height: 0;
+          border-top: 50px solid transparent;
+          border-bottom: 50px solid transparent;
+          border-left: 30px solid hsla(0, 0%, 83%, 1);
+          position: absolute;
+          top: 50%;
+          margin-top: -50px;
+          left: 100%;
+          z-index: 2;
+        }
+
+        &:before {
+          content: " ";
+          display: block;
+          width: 0;
+          height: 0;
+          border-top: 50px solid transparent;
+          border-bottom: 50px solid transparent;
+          border-left: 30px solid white;
+          position: absolute;
+          top: 50%;
+          margin-top: -50px;
+          margin-left: 1px;
+          left: 100%;
+          z-index: 1;
+        }
+      }
+
+    }
+
+
+}
